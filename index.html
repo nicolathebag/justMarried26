@@ -2,62 +2,366 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Nozze - [Nomi Sposi]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nozze di Nicola & Anastasia</title>
     <style>
-        body { font-family: Arial; max-width: 800px; margin: auto; padding: 20px; }
-        section { margin: 20px 0; }
-        form { display: grid; gap: 10px; }
-        input, select, textarea { padding: 10px; }
-        button { padding: 10px 20px; background: #007bff; color: white; border: none; cursor: pointer; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #faf9f7 0%, #f5e6d3 100%);
+            color: #4a3f35;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Decorazioni floreali di sfondo */
+        body::before {
+            content: '🌸';
+            position: fixed;
+            top: 10%;
+            left: 5%;
+            font-size: 4rem;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '🌹';
+            position: fixed;
+            bottom: 15%;
+            right: 8%;
+            font-size: 5rem;
+            opacity: 0.08;
+            animation: float 8s ease-in-out infinite reverse;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .decorative-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 15px 0;
+            font-size: 1.5rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #c9547d;
+            font-weight: normal;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #8b7355;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(201, 84, 125, 0.1);
+            animation: fadeInUp 0.8s ease-out;
+            border: 2px solid rgba(201, 84, 125, 0.2);
+            border-top: 4px solid #c9547d;
+        }
+
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.4s; }
+        section:nth-child(4) { animation-delay: 0.6s; }
+
+        h2 {
+            color: #c9547d;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: normal;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2::after {
+            content: '🌹';
+            display: block;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        .sposi-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .sposo-card {
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(201, 84, 125, 0.05) 0%, rgba(201, 84, 125, 0.1) 100%);
+            border-radius: 15px;
+            border: 1px solid rgba(201, 84, 125, 0.2);
+            text-align: center;
+        }
+
+        .sposo-card h3 {
+            color: #c9547d;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: normal;
+        }
+
+        .sposo-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .event-details {
+            background: linear-gradient(135deg, #f5e6d3 0%, #faf9f7 100%);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 25px;
+            border: 2px solid rgba(201, 84, 125, 0.2);
+        }
+
+        .event-details p {
+            font-size: 1.1rem;
+            margin: 12px 0;
+            color: #4a3f35;
+        }
+
+        .event-details strong {
+            color: #c9547d;
+            font-size: 1.15rem;
+        }
+
+        form {
+            display: grid;
+            gap: 15px;
+            max-width: 600px;
+            margin: 25px auto 0;
+        }
+
+        .form-group {
+            display: grid;
+            gap: 8px;
+        }
+
+        label {
+            color: #4a3f35;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        select,
+        textarea {
+            padding: 12px 15px;
+            border: 2px solid rgba(201, 84, 125, 0.3);
+            border-radius: 8px;
+            font-family: 'Georgia', serif;
+            font-size: 1rem;
+            color: #4a3f35;
+            transition: all 0.3s ease;
+            background-color: #faf9f7;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="number"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #c9547d;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(201, 84, 125, 0.2);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        button {
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #c9547d 0%, #d97a99 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-family: 'Georgia', serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            box-shadow: 0 5px 15px rgba(201, 84, 125, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(201, 84, 125, 0.4);
+            background: linear-gradient(135deg, #d97a99 0%, #c9547d 100%);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .sposi-info {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 25px;
+            }
+        }
+
+        p {
+            line-height: 1.8;
+        }
+
+        p:not(.event-details p) {
+            margin-bottom: 12px;
+        }
     </style>
 </head>
 <body>
-    <h1>Nozze di Mario & Luisa</h1>
+    <div class="container">
+        <header>
+            <div class="decorative-line">
+                <span>🌸</span>
+                <span>💐</span>
+                <span>🌸</span>
+            </div>
+            <h1>Nicola & Anastasia</h1>
+            <p class="subtitle">Celebriamo l'amore</p>
+            <div class="decorative-line">
+                <span>🌹</span>
+                <span>💕</span>
+                <span>🌹</span>
+            </div>
+        </header>
 
-    <section>
-        <h2>Info Anagrafiche</h2>
-        <p><strong>Mario Rossi</strong>: nato 01/01/1990 a Bari, figlio di Giovanni & Anna Rossi.</p>
-        <p><strong>Luisa Verdi</strong>: nata 15/05/1992 a Roma, figlia di Paolo & Maria Verdi.</p>
-        <!-- Aggiungi foto, data/ora/location/programma qui -->
-    </section>
+        <section>
+            <h2>I Novelli Sposi</h2>
+            <div class="sposi-info">
+                <div class="sposo-card">
+                    <h3>Nicola Losacco</h3>
+                    <p>Un uomo speciale che porta gioia e amore a chi lo circonda. Oggi condivide questo momento straordinario con la persona che ama.</p>
+                </div>
+                <div class="sposo-card">
+                    <h3>Anastasia Khalizova</h3>
+                    <p>Una donna meravigliosa che illumina ogni momento. Insieme a Nicola, inizia un nuovo capitolo pieno di felicità e promesse.</p>
+                </div>
+            </div>
+        </section>
 
-    <section>
-        <h2>Conferma Presenza (RSVP)</h2>
-        <!-- Form Netlify: aggiungi attributi magici -->
-        <form name="rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="rsvp">
-            <p>
-                <label>Nome & Cognome: <input type="text" name="nome" required></label>
-            </p>
-            <p>
-                <label>Email: <input type="email" name="email"></label>
-            </p>
-            <p>
-                <label>Presenza: 
+        <section>
+            <h2>Dettagli Evento</h2>
+            <div class="event-details">
+                <p><strong>📅 Data:</strong> 15/06/2026</p>
+                <p><strong>📍 Luogo:</strong> Bari, Puglia</p>
+                <p><strong>🕐 Orario:</strong> 18:00</p>
+                <p><strong>👗 Dress Code:</strong> Elegante</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Conferma Presenza</h2>
+            <p style="text-align: center; color: #8b7355; margin-bottom: 25px;">Compilate il modulo per confermare la vostra partecipazione</p>
+            <!-- Form Netlify: aggiungi attributi magici -->
+            <form name="rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="rsvp">
+                
+                <div class="form-group">
+                    <label>Nome & Cognome *</label>
+                    <input type="text" name="nome" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email">
+                </div>
+
+                <div class="form-group">
+                    <label>Confermi la tua presenza? *</label>
                     <select name="presenza" required>
-                        <option value="">Seleziona</option>
-                        <option value="si">Sì, confermo</option>
-                        <option value="no">No, non posso</option>
+                        <option value="">-- Seleziona --</option>
+                        <option value="si">✓ Sì, confermo</option>
+                        <option value="no">✗ No, purtroppo non posso</option>
                     </select>
-                </label>
-            </p>
-            <p>
-                <label>Numero ospiti: <input type="number" name="ospiti" min="1" max="10"></label>
-            </p>
-            <p>
-                <label>Allergie/Note: <textarea name="note"></textarea></label>
-            </p>
-            <!-- Honeypot anti-spam: nascosto -->
-            <p style="display:none;">
-                <label>Non compilare: <input name="bot-field"></label>
-            </p>
-            <button type="submit">Invia RSVP</button>
-        </form>
-    </section>
+                </div>
 
-    <section>
-        <h2>Dettagli Evento</h2>
-        <p>Data: 15/06/2026 | Location: Bari, Puglia | Dress code: Elegante</p>
-    </section>
+                <div class="form-group">
+                    <label>Numero di ospiti (incluso te)</label>
+                    <input type="number" name="ospiti" min="1" max="10" value="1">
+                </div>
+
+                <div class="form-group">
+                    <label>Allergie / Note</label>
+                    <textarea name="note" placeholder="Scrivi qui eventuali allergie o messaggi speciali..."></textarea>
+                </div>
+
+                <!-- Honeypot anti-spam: nascosto -->
+                <p style="display:none;">
+                    <label>Non compilare: <input name="bot-field"></label>
+                </p>
+
+                <button type="submit">💌 Invia RSVP</button>
+            </form>
+        </section>
+    </div>
 </body>
 </html>
