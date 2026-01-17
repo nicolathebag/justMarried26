@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Nozze - [Nomi Sposi]</title>
+    <style>
+        body { font-family: Arial; max-width: 800px; margin: auto; padding: 20px; }
+        section { margin: 20px 0; }
+        form { display: grid; gap: 10px; }
+        input, select, textarea { padding: 10px; }
+        button { padding: 10px 20px; background: #007bff; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Nozze di Mario & Luisa</h1>
+
+    <section>
+        <h2>Info Anagrafiche</h2>
+        <p><strong>Mario Rossi</strong>: nato 01/01/1990 a Bari, figlio di Giovanni & Anna Rossi.</p>
+        <p><strong>Luisa Verdi</strong>: nata 15/05/1992 a Roma, figlia di Paolo & Maria Verdi.</p>
+        <!-- Aggiungi foto, data/ora/location/programma qui -->
+    </section>
+
+    <section>
+        <h2>Conferma Presenza (RSVP)</h2>
+        <!-- Form Netlify: aggiungi attributi magici -->
+        <form name="rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="rsvp">
+            <p>
+                <label>Nome & Cognome: <input type="text" name="nome" required></label>
+            </p>
+            <p>
+                <label>Email: <input type="email" name="email"></label>
+            </p>
+            <p>
+                <label>Presenza: 
+                    <select name="presenza" required>
+                        <option value="">Seleziona</option>
+                        <option value="si">Sì, confermo</option>
+                        <option value="no">No, non posso</option>
+                    </select>
+                </label>
+            </p>
+            <p>
+                <label>Numero ospiti: <input type="number" name="ospiti" min="1" max="10"></label>
+            </p>
+            <p>
+                <label>Allergie/Note: <textarea name="note"></textarea></label>
+            </p>
+            <!-- Honeypot anti-spam: nascosto -->
+            <p style="display:none;">
+                <label>Non compilare: <input name="bot-field"></label>
+            </p>
+            <button type="submit">Invia RSVP</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Dettagli Evento</h2>
+        <p>Data: 15/06/2026 | Location: Bari, Puglia | Dress code: Elegante</p>
+    </section>
+</body>
+</html>
