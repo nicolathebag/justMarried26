@@ -13,8 +13,8 @@
 
         body {
             font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #faf9f7 0%, #f5e6d3 100%);
-            color: #4a3f35;
+            background: linear-gradient(135deg, #f5f9f0 0%, #e8f0dc 100%);
+            color: #2d3a24;
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
@@ -23,25 +23,25 @@
             justify-content: center;
         }
 
-        /* Decorazioni floreali di sfondo */
+        /* Decorazioni floreali tropicali di sfondo */
         body::before {
-            content: '🌸';
+            content: '🌿';
             position: fixed;
             top: 10%;
             left: 5%;
             font-size: 4rem;
-            opacity: 0.1;
+            opacity: 0.12;
             animation: float 6s ease-in-out infinite;
             z-index: 0;
         }
 
         body::after {
-            content: '🌹';
+            content: '🌺';
             position: fixed;
             bottom: 15%;
             right: 8%;
             font-size: 5rem;
-            opacity: 0.08;
+            opacity: 0.1;
             animation: float 8s ease-in-out infinite reverse;
             z-index: 0;
         }
@@ -79,10 +79,10 @@
             background: white;
             border-radius: 20px;
             padding: 50px 40px;
-            box-shadow: 0 10px 30px rgba(201, 84, 125, 0.1);
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.1);
             animation: fadeInUp 0.8s ease-out;
-            border: 2px solid rgba(201, 84, 125, 0.2);
-            border-top: 4px solid #c9547d;
+            border: 2px solid rgba(46, 125, 50, 0.2);
+            border-top: 4px solid #2e7d32;
             text-align: center;
         }
 
@@ -103,7 +103,7 @@
 
         h1 {
             font-size: 2.8rem;
-            color: #c9547d;
+            color: #2e7d32;
             font-weight: normal;
             letter-spacing: 2px;
             margin-bottom: 15px;
@@ -112,34 +112,46 @@
 
         .message {
             font-size: 1.2rem;
-            color: #8b7355;
+            color: #6b8e23;
             line-height: 1.8;
             margin: 25px 0;
         }
 
         .event-reminder {
-            background: linear-gradient(135deg, #f5e6d3 0%, #faf9f7 100%);
+            background: linear-gradient(135deg, #e8f0dc 0%, #f5f9f0 100%);
             padding: 25px;
             border-radius: 15px;
             margin: 30px 0;
-            border: 2px solid rgba(201, 84, 125, 0.2);
+            border: 2px solid rgba(46, 125, 50, 0.2);
         }
 
         .event-reminder p {
             font-size: 1.1rem;
             margin: 10px 0;
-            color: #4a3f35;
+            color: #2d3a24;
         }
 
         .event-reminder strong {
-            color: #c9547d;
+            color: #2e7d32;
+        }
+
+        .event-reminder a {
+            color: #2e7d32;
+            text-decoration: none;
+            border-bottom: 1px dashed #2e7d32;
+            transition: all 0.3s ease;
+        }
+
+        .event-reminder a:hover {
+            color: #d4af37;
+            border-bottom-color: #d4af37;
         }
 
         .back-link {
             display: inline-block;
             margin-top: 30px;
             padding: 15px 40px;
-            background: linear-gradient(135deg, #c9547d 0%, #d97a99 100%);
+            background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
             color: white;
             text-decoration: none;
             border-radius: 8px;
@@ -148,18 +160,18 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 5px 15px rgba(201, 84, 125, 0.3);
+            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
         }
 
         .back-link:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(201, 84, 125, 0.4);
-            background: linear-gradient(135deg, #d97a99 0%, #c9547d 100%);
+            box-shadow: 0 8px 20px rgba(46, 125, 50, 0.4);
+            background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
         }
 
         .couple-names {
             font-size: 1.5rem;
-            color: #c9547d;
+            color: #2e7d32;
             font-style: italic;
             margin-top: 20px;
         }
@@ -185,9 +197,9 @@
             <div class="success-icon">💌</div>
 
             <div class="decorative-line">
-                <span>🌸</span>
-                <span>💐</span>
-                <span>🌸</span>
+                <span>🌿</span>
+                <span>🌺</span>
+                <span>🌿</span>
             </div>
 
             <h1>Grazie!</h1>
@@ -198,15 +210,15 @@
             </p>
 
             <div class="event-reminder">
-                <p><strong>📅 Ti aspettiamo il:</strong> 15 Giugno 2026</p>
-                <p><strong>📍 Luogo:</strong> Bari, Puglia</p>
-                <p><strong>🕐 Orario:</strong> 18:00</p>
+                <p><strong>📅 Ti aspettiamo il:</strong> 24 Settembre 2026</p>
+                <p><strong>⛪ Cerimonia:</strong> <a href="https://maps.app.goo.gl/Mmm5AadB6bUFoiXd8" target="_blank" rel="noopener">Basilica di San Nicola</a> - ore 10:30</p>
+                <p><strong>🍽️ Ricevimento:</strong> <a href="https://maps.app.goo.gl/gyQPPhtSWLvdgnvj6" target="_blank" rel="noopener">Sala San Tommaso Ricevimenti</a></p>
             </div>
 
             <div class="decorative-line">
-                <span>🌹</span>
-                <span>💕</span>
-                <span>🌹</span>
+                <span>🌴</span>
+                <span>🦜</span>
+                <span>🌴</span>
             </div>
 
             <p class="couple-names">Nicola & Anastasia</p>
