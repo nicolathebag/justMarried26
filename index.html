@@ -299,20 +299,6 @@
             transform: translateY(0);
         }
 
-        .error-message {
-            color: #d32f2f;
-            font-size: 0.9rem;
-            margin-top: 5px;
-            display: none;
-        }
-
-        .success-message {
-            color: #2e7d32;
-            font-size: 0.9rem;
-            margin-top: 5px;
-            display: none;
-        }
-
         @media (max-width: 600px) {
             h1 {
                 font-size: 2.5rem;
@@ -402,17 +388,17 @@
             <form id="rsvpForm" onsubmit="handleFormSubmit(event)">
                 <div class="form-group">
                     <label>Nome & Cognome *</label>
-                    <input type="text" id="nome" name="nome" placeholder="Inserisci il tuo nome completo" required>
+                    <input type="text" id="nome" placeholder="Inserisci il tuo nome completo" required>
                 </div>
 
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" id="email" name="email" placeholder="La tua email">
+                    <input type="email" id="email" placeholder="La tua email">
                 </div>
 
                 <div class="form-group">
                     <label>Confermi la tua presenza? *</label>
-                    <select id="presenza" name="presenza" required>
+                    <select id="presenza" required>
                         <option value="">-- Seleziona --</option>
                         <option value="si">✓ Sì, confermo</option>
                         <option value="no">✗ No, purtroppo non posso</option>
@@ -421,92 +407,81 @@
 
                 <div class="form-group">
                     <label>Numero di ospiti (incluso te)</label>
-                    <input type="number" id="ospiti" name="ospiti" min="1" max="10" value="1">
+                    <input type="number" id="ospiti" min="1" max="10" value="1">
                 </div>
 
                 <div class="form-group">
                     <label>Allergie / Note</label>
-                    <textarea id="note" name="note" placeholder="Scrivi qui eventuali allergie o messaggi speciali..."></textarea>
+                    <textarea id="note" placeholder="Scrivi qui eventuali allergie o messaggi speciali..."></textarea>
                 </div>
 
                 <button type="submit" id="submitBtn">💌 Invia RSVP</button>
-                <div class="error-message" id="errorMessage"></div>
-                <div class="success-message" id="successMessage"></div>
+                <div id="message" style="margin-top: 15px; text-align: center; font-size: 0.95rem;"></div>
             </form>
         </section>
     </div>
 
     <script>
-        // Sostituisci con la tua SAS URL di Azure Blob Storage
-        const BLOB_STORAGE_SAS_URL = 'https://rsvpjustmarriedcontainer.blob.core.windows.net/rsvp-container?sp=w&st=2026-01-17T07:07:26Z&se=2026-11-01T15:22:26Z&spr=https&sv=2024-11-04&sr=c&sig=tWrMs7x6MsytkjJxpqZ%2BIbicGbv3%2F5xXmU583fhxF9k%3D';
+        // Configurazione Azure Blob Storage
+        const STORAGE_ACCOUNT = 'rsvpjustmarriedcontainer';
+        const CONTAINER = 'rsvp-container';
+        const SAS_TOKEN = 'sp=w&st=2026-01-17T07:07:26Z&se=2026-11-01T15:22:26Z&spr=https&sv=2024-11-04&sr=c&sig=tWrMs7x6MsytkjJxpqZ%2BIbicGbv3%2F5xXmU583fhxF9k%3D';
         
         async function handleFormSubmit(event) {
             event.preventDefault();
             
             const submitBtn = document.getElementById('submitBtn');
-            const errorMessage = document.getElementById('errorMessage');
-            const successMessage = document.getElementById('successMessage');
+            const messageDiv = document.getElementById('message');
+            const form = document.getElementById('rsvpForm');
             
-            // Nascondi messaggi precedenti
-            errorMessage.style.display = 'none';
-            successMessage.style.display = 'none';
-            
-            // Disabilita il pulsante durante l'invio
             submitBtn.disabled = true;
             submitBtn.textContent = '⏳ Invio in corso...';
+            messageDiv.innerHTML = '';
             
             try {
-                // Raccogli i dati del form
+                // Raccogli dati
                 const formData = {
                     nome: document.getElementById('nome').value,
                     email: document.getElementById('email').value,
                     presenza: document.getElementById('presenza').value,
                     ospiti: document.getElementById('ospiti').value,
                     note: document.getElementById('note').value,
-                    timestamp: new Date().toISOString()
+                    timestamp: new Date().toISOString(),
+                    ip: 'browser' // Blob Storage non ha accesso IP diretto
                 };
                 
-                // Genera un nome file unico (basato su timestamp e nome)
-                const timestamp = Date.now();
-                const fileName = `rsvp_${timestamp}_${formData.nome.replace(/\s+/g, '_')}.json`;
+                // Genera nome file unico
+                const fileName = `rsvp_${Date.now()}_${formData.nome.replace(/\s+/g, '_')}.json`;
                 
-                // Crea l'URL completo per il blob
-                const blobUrl = BLOB_STORAGE_SAS_URL.includes('?') 
-                    ? `${BLOB_STORAGE_SAS_URL.split('?')[0]}/${fileName}?${BLOB_STORAGE_SAS_URL.split('?')[1]}`
-                    : `${BLOB_STORAGE_SAS_URL}/${fileName}`;
+                // Costruisci URL per Blob Storage
+                const blobUrl = `https://${STORAGE_ACCOUNT}.blob.core.windows.net/${CONTAINER}/${fileName}?${SAS_TOKEN}`;
                 
-                // Invia i dati a Blob Storage
+                // Invia PUT request
                 const response = await fetch(blobUrl, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
                         'x-ms-blob-type': 'BlockBlob'
                     },
-                    body: JSON.stringify(formData),
-                    mode: 'cors'
+                    body: JSON.stringify(formData)
                 });
                 
-                if (response.ok) {
-                    // Successo
-                    successMessage.textContent = '✓ Grazie! La tua conferma è stata ricevuta con successo.';
-                    successMessage.style.display = 'block';
-                    
-                    // Resetta il form
-                    document.getElementById('rsvpForm').reset();
-                    
-                    // Reindirizza alla pagina di ringraziamento dopo 2 secondi
-                    setTimeout(() => {
-                        window.location.href = '/grazie.html';
-                    }, 2000);
-                } else {
-                    throw new Error(`Errore HTTP: ${response.status}`);
+                if (!response.ok) {
+                    throw new Error(`Errore server: ${response.status}`);
                 }
-            } catch (error) {
-                // Mostra errore
-                errorMessage.textContent = `✗ Errore: ${error.message}. Riprova per favore.`;
-                errorMessage.style.display = 'block';
                 
-                // Riabilita il pulsante
+                // Successo
+                messageDiv.innerHTML = '✓ Grazie! La tua conferma è stata ricevuta con successo.';
+                messageDiv.style.color = '#2e7d32';
+                form.reset();
+                
+                setTimeout(() => {
+                    window.location.href = '/grazie.html';
+                }, 2000);
+                
+            } catch (error) {
+                messageDiv.innerHTML = `✗ Errore: ${error.message}. Riprova per favore.`;
+                messageDiv.style.color = '#d32f2f';
                 submitBtn.disabled = false;
                 submitBtn.textContent = '💌 Invia RSVP';
             }
