@@ -13,32 +13,32 @@
 
         body {
             font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #faf9f7 0%, #f5e6d3 100%);
-            color: #4a3f35;
+            background: linear-gradient(135deg, #f5f9f0 0%, #e8f0dc 100%);
+            color: #2d3a24;
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
         }
 
-        /* Decorazioni floreali di sfondo */
+        /* Decorazioni floreali tropicali di sfondo */
         body::before {
-            content: '🌸';
+            content: '🌿';
             position: fixed;
             top: 10%;
             left: 5%;
             font-size: 4rem;
-            opacity: 0.1;
+            opacity: 0.12;
             animation: float 6s ease-in-out infinite;
             z-index: 0;
         }
 
         body::after {
-            content: '🌹';
+            content: '🌺';
             position: fixed;
             bottom: 15%;
             right: 8%;
             font-size: 5rem;
-            opacity: 0.08;
+            opacity: 0.1;
             animation: float 8s ease-in-out infinite reverse;
             z-index: 0;
         }
@@ -84,7 +84,7 @@
 
         h1 {
             font-size: 3.5rem;
-            color: #c9547d;
+            color: #2e7d32;
             font-weight: normal;
             letter-spacing: 2px;
             margin-bottom: 10px;
@@ -93,7 +93,7 @@
 
         .subtitle {
             font-size: 1.2rem;
-            color: #8b7355;
+            color: #6b8e23;
             font-style: italic;
             margin-top: 10px;
         }
@@ -103,10 +103,10 @@
             border-radius: 20px;
             padding: 40px;
             margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(201, 84, 125, 0.1);
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.1);
             animation: fadeInUp 0.8s ease-out;
-            border: 2px solid rgba(201, 84, 125, 0.2);
-            border-top: 4px solid #c9547d;
+            border: 2px solid rgba(46, 125, 50, 0.2);
+            border-top: 4px solid #2e7d32;
         }
 
         section:nth-child(2) { animation-delay: 0.2s; }
@@ -114,7 +114,7 @@
         section:nth-child(4) { animation-delay: 0.6s; }
 
         h2 {
-            color: #c9547d;
+            color: #2e7d32;
             font-size: 2rem;
             margin-bottom: 20px;
             text-align: center;
@@ -124,7 +124,7 @@
         }
 
         h2::after {
-            content: '🌹';
+            content: '🌺';
             display: block;
             font-size: 1.2rem;
             margin-top: 10px;
@@ -138,17 +138,17 @@
         }
 
         .sposo-card {
-            padding: 20px;
-            background: linear-gradient(135deg, rgba(201, 84, 125, 0.05) 0%, rgba(201, 84, 125, 0.1) 100%);
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(46, 125, 50, 0.05) 0%, rgba(212, 175, 55, 0.08) 100%);
             border-radius: 15px;
-            border: 1px solid rgba(201, 84, 125, 0.2);
+            border: 1px solid rgba(46, 125, 50, 0.2);
             text-align: center;
         }
 
         .sposo-card h3 {
-            color: #c9547d;
+            color: #2e7d32;
             font-size: 1.5rem;
-            margin-bottom: 10px;
+            margin-bottom: 0;
             font-weight: normal;
         }
 
@@ -159,23 +159,41 @@
         }
 
         .event-details {
-            background: linear-gradient(135deg, #f5e6d3 0%, #faf9f7 100%);
+            background: linear-gradient(135deg, #e8f0dc 0%, #f5f9f0 100%);
             padding: 30px;
             border-radius: 15px;
             text-align: center;
             margin-top: 25px;
-            border: 2px solid rgba(201, 84, 125, 0.2);
+            border: 2px solid rgba(46, 125, 50, 0.2);
         }
 
         .event-details p {
             font-size: 1.1rem;
             margin: 12px 0;
-            color: #4a3f35;
+            color: #2d3a24;
         }
 
         .event-details strong {
-            color: #c9547d;
+            color: #2e7d32;
             font-size: 1.15rem;
+        }
+
+        .event-details a {
+            color: #2e7d32;
+            text-decoration: none;
+            border-bottom: 1px dashed #2e7d32;
+            transition: all 0.3s ease;
+        }
+
+        .event-details a:hover {
+            color: #d4af37;
+            border-bottom-color: #d4af37;
+        }
+
+        .residence-info {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed rgba(46, 125, 50, 0.3);
         }
 
         form {
@@ -191,7 +209,7 @@
         }
 
         label {
-            color: #4a3f35;
+            color: #2d3a24;
             font-weight: 600;
             font-size: 0.95rem;
         }
@@ -202,13 +220,13 @@
         select,
         textarea {
             padding: 12px 15px;
-            border: 2px solid rgba(201, 84, 125, 0.3);
+            border: 2px solid rgba(46, 125, 50, 0.3);
             border-radius: 8px;
             font-family: 'Georgia', serif;
             font-size: 1rem;
-            color: #4a3f35;
+            color: #2d3a24;
             transition: all 0.3s ease;
-            background-color: #faf9f7;
+            background-color: #f5f9f0;
         }
 
         input[type="text"]:focus,
@@ -217,9 +235,9 @@
         select:focus,
         textarea:focus {
             outline: none;
-            border-color: #c9547d;
+            border-color: #2e7d32;
             background-color: white;
-            box-shadow: 0 0 10px rgba(201, 84, 125, 0.2);
+            box-shadow: 0 0 10px rgba(46, 125, 50, 0.2);
         }
 
         textarea {
@@ -229,7 +247,7 @@
 
         button {
             padding: 15px 40px;
-            background: linear-gradient(135deg, #c9547d 0%, #d97a99 100%);
+            background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
             color: white;
             border: none;
             border-radius: 8px;
@@ -241,13 +259,13 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-top: 10px;
-            box-shadow: 0 5px 15px rgba(201, 84, 125, 0.3);
+            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
         }
 
         button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(201, 84, 125, 0.4);
-            background: linear-gradient(135deg, #d97a99 0%, #c9547d 100%);
+            box-shadow: 0 8px 20px rgba(46, 125, 50, 0.4);
+            background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
         }
 
         button:active {
@@ -281,16 +299,16 @@
     <div class="container">
         <header>
             <div class="decorative-line">
-                <span>🌸</span>
-                <span>💐</span>
-                <span>🌸</span>
+                <span>🌿</span>
+                <span>🌺</span>
+                <span>🌿</span>
             </div>
             <h1>Nicola & Anastasia</h1>
             <p class="subtitle">Celebriamo l'amore</p>
             <div class="decorative-line">
-                <span>🌹</span>
-                <span>💕</span>
-                <span>🌹</span>
+                <span>🌴</span>
+                <span>🦜</span>
+                <span>🌴</span>
             </div>
         </header>
 
@@ -299,11 +317,9 @@
             <div class="sposi-info">
                 <div class="sposo-card">
                     <h3>Nicola Losacco</h3>
-                    <p>Un uomo speciale che porta gioia e amore a chi lo circonda. Oggi condivide questo momento straordinario con la persona che ama.</p>
                 </div>
                 <div class="sposo-card">
                     <h3>Anastasia Khalizova</h3>
-                    <p>Una donna meravigliosa che illumina ogni momento. Insieme a Nicola, inizia un nuovo capitolo pieno di felicità e promesse.</p>
                 </div>
             </div>
         </section>
@@ -311,16 +327,19 @@
         <section>
             <h2>Dettagli Evento</h2>
             <div class="event-details">
-                <p><strong>📅 Data:</strong> 15/06/2026</p>
-                <p><strong>📍 Luogo:</strong> Bari, Puglia</p>
-                <p><strong>🕐 Orario:</strong> 18:00</p>
+                <p><strong>📅 Data:</strong> 24/09/2026</p>
+                <p><strong>⛪ Cerimonia:</strong> <a href="https://maps.app.goo.gl/Mmm5AadB6bUFoiXd8" target="_blank" rel="noopener">Basilica di San Nicola</a> - ore 10:30</p>
+                <p><strong>🍽️ Ricevimento:</strong> <a href="https://maps.app.goo.gl/gyQPPhtSWLvdgnvj6" target="_blank" rel="noopener">Sala San Tommaso Ricevimenti</a></p>
                 <p><strong>👗 Dress Code:</strong> Elegante</p>
+                <div class="residence-info">
+                    <p><strong>🏠 Residenza Sposi:</strong> Via Bitritto 96/A, Bari</p>
+                </div>
             </div>
         </section>
 
         <section>
             <h2>Conferma Presenza</h2>
-            <p style="text-align: center; color: #8b7355; margin-bottom: 25px;">Compilate il modulo per confermare la vostra partecipazione</p>
+            <p style="text-align: center; color: #6b8e23; margin-bottom: 25px;">Compilate il modulo per confermare la vostra partecipazione</p>
             <!-- Form Netlify: aggiungi attributi magici -->
             <form name="rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/grazie.html">
                 <input type="hidden" name="form-name" value="rsvp">
