@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grazie! - Nozze di Nicola & Anastasia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #faf9f7 0%, #f5e6d3 100%);
+            color: #4a3f35;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Decorazioni floreali di sfondo */
+        body::before {
+            content: '🌸';
+            position: fixed;
+            top: 10%;
+            left: 5%;
+            font-size: 4rem;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '🌹';
+            position: fixed;
+            bottom: 15%;
+            right: 8%;
+            font-size: 5rem;
+            opacity: 0.08;
+            animation: float 8s ease-in-out infinite reverse;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .thank-you-card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: 0 10px 30px rgba(201, 84, 125, 0.1);
+            animation: fadeInUp 0.8s ease-out;
+            border: 2px solid rgba(201, 84, 125, 0.2);
+            border-top: 4px solid #c9547d;
+            text-align: center;
+        }
+
+        .success-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .decorative-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            font-size: 1.5rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: #c9547d;
+            font-weight: normal;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .message {
+            font-size: 1.2rem;
+            color: #8b7355;
+            line-height: 1.8;
+            margin: 25px 0;
+        }
+
+        .event-reminder {
+            background: linear-gradient(135deg, #f5e6d3 0%, #faf9f7 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border: 2px solid rgba(201, 84, 125, 0.2);
+        }
+
+        .event-reminder p {
+            font-size: 1.1rem;
+            margin: 10px 0;
+            color: #4a3f35;
+        }
+
+        .event-reminder strong {
+            color: #c9547d;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #c9547d 0%, #d97a99 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(201, 84, 125, 0.3);
+        }
+
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(201, 84, 125, 0.4);
+            background: linear-gradient(135deg, #d97a99 0%, #c9547d 100%);
+        }
+
+        .couple-names {
+            font-size: 1.5rem;
+            color: #c9547d;
+            font-style: italic;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .thank-you-card {
+                padding: 30px 20px;
+            }
+
+            .success-icon {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="thank-you-card">
+            <div class="success-icon">💌</div>
+
+            <div class="decorative-line">
+                <span>🌸</span>
+                <span>💐</span>
+                <span>🌸</span>
+            </div>
+
+            <h1>Grazie!</h1>
+
+            <p class="message">
+                La tua conferma è stata ricevuta con successo.<br>
+                Non vediamo l'ora di festeggiare insieme a te!
+            </p>
+
+            <div class="event-reminder">
+                <p><strong>📅 Ti aspettiamo il:</strong> 15 Giugno 2026</p>
+                <p><strong>📍 Luogo:</strong> Bari, Puglia</p>
+                <p><strong>🕐 Orario:</strong> 18:00</p>
+            </div>
+
+            <div class="decorative-line">
+                <span>🌹</span>
+                <span>💕</span>
+                <span>🌹</span>
+            </div>
+
+            <p class="couple-names">Nicola & Anastasia</p>
+
+            <a href="/" class="back-link">Torna alla Home</a>
+        </div>
+    </div>
+</body>
+</html>
