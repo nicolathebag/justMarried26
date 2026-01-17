@@ -336,9 +336,45 @@
             color: #4caf50;
             text-decoration: underline;
         }
+
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            padding: 8px 15px;
+            border: 2px solid #2e7d32;
+            background: white;
+            color: #2e7d32;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .lang-btn.active {
+            background: #2e7d32;
+            color: white;
+        }
+
+        .lang-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(46, 125, 50, 0.2);
+        }
     </style>
 </head>
 <body>
+    <div class="language-switcher">
+        <button class="lang-btn active" onclick="setLanguage('it')">🇮🇹 Italiano</button>
+        <button class="lang-btn" onclick="setLanguage('ru')">🇷🇺 Русский</button>
+    </div>
+    
     <div class="container">
         <header>
             <div class="decorative-line">
@@ -347,7 +383,7 @@
                 <span>🌿</span>
             </div>
             <h1>Nicola & Anastasia</h1>
-            <p class="subtitle">Celebriamo l'amore</p>
+            <p class="subtitle" data-i18n="subtitle">Celebriamo l'amore</p>
             <div class="decorative-line">
                 <span>🌴</span>
                 <span>🦜</span>
@@ -356,74 +392,190 @@
         </header>
 
         <section>
-            <h2>I Novelli Sposi</h2>
+            <h2 data-i18n="section_sposi">I Novelli Sposi</h2>
             <div class="sposi-info">
                 <div class="sposo-card">
                     <h3>Nicola Losacco</h3>
-                    <p>Un'anima nobile che brilla di calorosa umanità. Con eleganza naturale e cuore profondo, porta luce e serenità in chi lo circonda.</p>
+                    <p data-i18n="desc_nicola">Un'anima nobile che brilla di calorosa umanità. Con eleganza naturale e cuore profondo, porta luce e serenità in chi lo circonda.</p>
                 </div>
                 <div class="sposo-card">
                     <h3>Anastasia Khalizova</h3>
-                    <p>Una donna dall'essenza radiosa e affascinante. Con grazia genuina e dignità naturale, incarna la bellezza senza tempo.</p>
+                    <p data-i18n="desc_anastasia">Una donna dall'essenza radiosa e affascinante. Con grazia genuina e dignità naturale, incarna la bellezza senza tempo.</p>
                 </div>
             </div>
         </section>
 
         <section>
-            <h2>Dettagli Evento</h2>
+            <h2 data-i18n="section_dettagli">Dettagli Evento</h2>
             <div class="event-details">
-                <p><strong>📅 Data:</strong> 24 Settembre 2026</p>
-                <p><strong>⛪ Cerimonia:</strong> <a href="https://maps.app.goo.gl/Mmm5AadB6bUFoiXd8" target="_blank" rel="noopener">Basilica di San Nicola</a> - ore 10:30</p>
-                <p><strong>🍽️ Ricevimento:</strong> <a href="https://maps.app.goo.gl/gyQPPhtSWLvdgnvj6" target="_blank" rel="noopener">Sala San Tommaso Ricevimenti</a></p>
-                <p><strong>👗 Dress Code:</strong> Elegante</p>
+                <p><strong>📅 <span data-i18n="data_label">Data:</span></strong> 24 Settembre 2026</p>
+                <p><strong>⛪ <span data-i18n="cerimonia_label">Cerimonia:</span></strong> <a href="https://maps.app.goo.gl/Mmm5AadB6bUFoiXd8" target="_blank" rel="noopener">Basilica di San Nicola</a> - ore 10:30</p>
+                <p><strong>🍽️ <span data-i18n="ricevimento_label">Ricevimento:</span></strong> <a href="https://maps.app.goo.gl/gyQPPhtSWLvdgnvj6" target="_blank" rel="noopener">Sala San Tommaso Ricevimenti</a></p>
+                <p><strong>👗 <span data-i18n="dress_code_label">Dress Code:</span></strong> Elegante</p>
                 <div class="residence-info">
-                    <p><strong>🏠 Residenza Sposi:</strong> Via Bitritto 96/A, Bari</p>
+                    <p><strong>🏠 <span data-i18n="residenza_label">Residenza Sposi:</span></strong> Via Bitritto 96/A, Bari</p>
                 </div>
             </div>
         </section>
 
         <section>
-            <h2>Conferma Presenza</h2>
-            <p style="text-align: center; color: #6b8e23; margin-bottom: 25px;">Compilate il modulo per confermare la vostra partecipazione</p>
+            <h2 data-i18n="section_conferma">Conferma Presenza</h2>
+            <p style="text-align: center; color: #6b8e23; margin-bottom: 25px;" data-i18n="form_intro">Compilate il modulo per confermare la vostra partecipazione</p>
             <form id="rsvpForm" onsubmit="handleFormSubmit(event)">
                 <div class="form-group">
-                    <label>Nome & Cognome *</label>
-                    <input type="text" id="nome" placeholder="Inserisci il tuo nome completo" required>
+                    <label data-i18n="form_nome">Nome & Cognome *</label>
+                    <input type="text" id="nome" data-i18n-placeholder="form_nome_placeholder" placeholder="Inserisci il tuo nome completo" required>
                 </div>
 
                 <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" id="email" placeholder="La tua email">
+                    <label data-i18n="form_email">Email</label>
+                    <input type="email" id="email" data-i18n-placeholder="form_email_placeholder" placeholder="La tua email">
                 </div>
 
                 <div class="form-group">
-                    <label>Confermi la tua presenza? *</label>
+                    <label data-i18n="form_presenza">Confermi la tua presenza? *</label>
                     <select id="presenza" required>
-                        <option value="">-- Seleziona --</option>
-                        <option value="si">✓ Sì, confermo</option>
-                        <option value="no">✗ No, purtroppo non posso</option>
+                        <option value="">-- <span data-i18n="form_select_placeholder">Seleziona</span> --</option>
+                        <option value="si" data-i18n="form_si">✓ Sì, confermo</option>
+                        <option value="no" data-i18n="form_no">✗ No, purtroppo non posso</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label>Numero di ospiti (incluso te)</label>
+                    <label data-i18n="form_ospiti">Numero di ospiti (incluso te)</label>
                     <input type="number" id="ospiti" min="1" max="10" value="1">
                 </div>
 
                 <div class="form-group">
-                    <label>Allergie / Note</label>
-                    <textarea id="note" placeholder="Scrivi qui eventuali allergie o messaggi speciali..."></textarea>
+                    <label data-i18n="form_note">Allergie / Note</label>
+                    <textarea id="note" data-i18n-placeholder="form_note_placeholder" placeholder="Scrivi qui eventuali allergie o messaggi speciali..."></textarea>
                 </div>
 
-                <button type="submit" id="submitBtn">💌 Invia RSVP</button>
+                <button type="submit" id="submitBtn" data-i18n="form_submit">💌 Invia RSVP</button>
                 <div id="message" style="margin-top: 15px; text-align: center; font-size: 0.95rem;"></div>
             </form>
         </section>
     </div>
 
     <script>
+        // Traduzioni
+        const translations = {
+            it: {
+                subtitle: 'Celebriamo l\'amore',
+                section_sposi: 'I Novelli Sposi',
+                desc_nicola: 'Un\'anima nobile che brilla di calorosa umanità. Con eleganza naturale e cuore profondo, porta luce e serenità in chi lo circonda.',
+                desc_anastasia: 'Una donna dall\'essenza radiosa e affascinante. Con grazia genuina e dignità naturale, incarna la bellezza senza tempo.',
+                section_dettagli: 'Dettagli Evento',
+                data_label: 'Data:',
+                cerimonia_label: 'Cerimonia:',
+                ricevimento_label: 'Ricevimento:',
+                dress_code_label: 'Dress Code:',
+                residenza_label: 'Residenza Sposi:',
+                section_conferma: 'Conferma Presenza',
+                form_intro: 'Compilate il modulo per confermare la vostra partecipazione',
+                form_nome: 'Nome & Cognome *',
+                form_nome_placeholder: 'Inserisci il tuo nome completo',
+                form_email: 'Email',
+                form_email_placeholder: 'La tua email',
+                form_presenza: 'Confermi la tua presenza? *',
+                form_select_placeholder: 'Seleziona',
+                form_si: '✓ Sì, confermo',
+                form_no: '✗ No, purtroppo non posso',
+                form_ospiti: 'Numero di ospiti (incluso te)',
+                form_note: 'Allergie / Note',
+                form_note_placeholder: 'Scrivi qui eventuali allergie o messaggi speciali...',
+                form_submit: '💌 Invia RSVP',
+                error_msg: 'Errore:',
+                retry_msg: 'Riprova per favore.',
+                success_msg: '✓ Grazie! La tua conferma è stata ricevuta con successo.'
+            },
+            ru: {
+                subtitle: 'Отпраздновать любовь',
+                section_sposi: 'Новобрачные',
+                desc_nicola: 'Благородная душа, сияющая теплом человечности. С естественной элегантностью и глубоким сердцем приносит свет и спокойствие тем, кто его окружает.',
+                desc_anastasia: 'Женщина с лучистой и увлекательной сущностью. С искренней грацией и природной достоинством воплощает красоту, не ограниченную временем.',
+                section_dettagli: 'Детали события',
+                data_label: 'Дата:',
+                cerimonia_label: 'Церемония:',
+                ricevimento_label: 'Приём:',
+                dress_code_label: 'Дресс-код:',
+                residenza_label: 'Адрес молодожёнов:',
+                section_conferma: 'Подтверждение присутствия',
+                form_intro: 'Заполните форму для подтверждения вашего участия',
+                form_nome: 'Имя и фамилия *',
+                form_nome_placeholder: 'Введите ваше полное имя',
+                form_email: 'Электронная почта',
+                form_email_placeholder: 'Ваша электронная почта',
+                form_presenza: 'Вы подтверждаете своё присутствие? *',
+                form_select_placeholder: 'Выберите',
+                form_si: '✓ Да, подтверждаю',
+                form_no: '✗ Нет, к сожалению, не смогу',
+                form_ospiti: 'Количество гостей (включая вас)',
+                form_note: 'Аллергии / Примечания',
+                form_note_placeholder: 'Напишите здесь возможные аллергии или специальные пожелания...',
+                form_submit: '💌 Отправить RSVP',
+                error_msg: 'Ошибка:',
+                retry_msg: 'Пожалуйста, попробуйте снова.',
+                success_msg: '✓ Спасибо! Ваше подтверждение было получено.'
+            }
+        };
+
+        let currentLang = 'it';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('language', lang);
+            updatePageLanguage();
+            updateButtonStates();
+        }
+
+        function updatePageLanguage() {
+            const trans = translations[currentLang];
+            
+            // Aggiorna elementi con data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (trans[key]) {
+                    el.textContent = trans[key];
+                }
+            });
+            
+            // Aggiorna placeholder
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (trans[key]) {
+                    el.placeholder = trans[key];
+                }
+            });
+
+            // Aggiorna attributi delle option select
+            document.querySelectorAll('option[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (trans[key]) {
+                    el.textContent = trans[key];
+                }
+            });
+
+            document.documentElement.lang = lang;
+        }
+
+        function updateButtonStates() {
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[onclick="setLanguage('${currentLang}')"]`).classList.add('active');
+        }
+
+        // Carica lingua salvata al caricamento
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('language') || 'it';
+            currentLang = savedLang;
+            updatePageLanguage();
+            updateButtonStates();
+        });
+
         // Configurazione Formspree
-        const FORMSPREE_ID = 'xeeeerlo'; // Sostituisci con il tuo ID da formspree.io
+        const FORMSPREE_ID = 'xeeeerlo';
         
         async function handleFormSubmit(event) {
             event.preventDefault();
@@ -431,13 +583,13 @@
             const submitBtn = document.getElementById('submitBtn');
             const messageDiv = document.getElementById('message');
             const form = document.getElementById('rsvpForm');
+            const trans = translations[currentLang];
             
             submitBtn.disabled = true;
             submitBtn.textContent = '⏳ Invio in corso...';
             messageDiv.innerHTML = '';
             
             try {
-                // Raccogli dati del form
                 const formDataObj = new FormData();
                 formDataObj.append('nome', document.getElementById('nome').value);
                 formDataObj.append('email', document.getElementById('email').value);
@@ -445,7 +597,6 @@
                 formDataObj.append('ospiti', document.getElementById('ospiti').value);
                 formDataObj.append('note', document.getElementById('note').value);
                 
-                // Invia a Formspree
                 const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
                     method: 'POST',
                     body: formDataObj,
@@ -455,11 +606,10 @@
                 });
                 
                 if (!response.ok) {
-                    throw new Error(`Errore: ${response.status}`);
+                    throw new Error(`${trans.error_msg} ${response.status}`);
                 }
                 
-                // Successo
-                messageDiv.innerHTML = '✓ Grazie! La tua conferma è stata ricevuta con successo.';
+                messageDiv.innerHTML = trans.success_msg;
                 messageDiv.style.color = '#2e7d32';
                 form.reset();
                 
@@ -468,10 +618,10 @@
                 }, 2000);
                 
             } catch (error) {
-                messageDiv.innerHTML = `✗ Errore: ${error.message}. Riprova per favore.`;
+                messageDiv.innerHTML = `✗ ${error.message}. ${trans.retry_msg}`;
                 messageDiv.style.color = '#d32f2f';
                 submitBtn.disabled = false;
-                submitBtn.textContent = '💌 Invia RSVP';
+                submitBtn.textContent = trans.form_submit;
             }
         }
     </script>
