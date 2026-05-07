@@ -5,6 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>💚 Nozze di Nicola & Anastasia</title>
     <style>
+        .lang-toggle {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            z-index: 10;
+        }
+        .lang-btn {
+            background: #fff;
+            border: 2px solid #2e7d32;
+            color: #2e7d32;
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-left: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.2s, background 0.2s;
+        }
+        .lang-btn.selected {
+            background: #2e7d32;
+            color: #fff;
+            opacity: 1;
+        }
+    </style>
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -370,6 +395,15 @@
     </style>
 </head>
 <body>
+
+    <main>
+        <section style='text-align:center; margin-top:80px;'>
+            <h1>Nicola & Anastasia</h1>
+            <h2>Ci sposiamo!</h2>
+            <p>Unisciti a noi per celebrare il nostro giorno speciale.<br>Scorri per scoprire tutti i dettagli!</p>
+            <a href='Partecipa.html' style='display:inline-block;margin-top:30px;padding:12px 28px;background:#2e7d32;color:#fff;border-radius:25px;text-decoration:none;font-weight:bold;'>Partecipa</a>
+        </section>
+    </main>
     <div class="language-switcher">
         <button class="lang-btn active" onclick="setLanguage('it')">🇮🇹 Italiano</button>
         <button class="lang-btn" onclick="setLanguage('ru')">🇷🇺 Русский</button>
