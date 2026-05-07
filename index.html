@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nozze di Nicola & Anastasia</title>
+    <title>💚 Nozze di Nicola & Anastasia</title>
     <style>
         * {
             margin: 0;
@@ -565,14 +565,17 @@
         function updateButtonStates() {
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
+                if (btn.textContent.includes('🇮🇹') && currentLang === 'it') {
+                    btn.classList.add('active');
+                } else if (btn.textContent.includes('🇷🇺') && currentLang === 'ru') {
+                    btn.classList.add('active');
+                }
             });
-            document.querySelector(`[onclick="setLanguage('${currentLang}')"]`).classList.add('active');
         }
 
-        // Carica lingua salvata al caricamento
+        // Imposta sempre la lingua italiana al caricamento
         window.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('language') || 'it';
-            currentLang = savedLang;
+            currentLang = 'it';
             updatePageLanguage();
             updateButtonStates();
         });
