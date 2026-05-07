@@ -3,227 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grazie! - Nozze di Nicola & Anastasia</title>
+    <title>Grazie! &#8212; Nozze di Nicola &amp; Anastasia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #f5f9f0 0%, #e8f0dc 100%);
-            color: #2d3a24;
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        body::before {
-            content: '🌿';
-            position: fixed;
-            top: 10%;
-            left: 5%;
-            font-size: 4rem;
-            opacity: 0.12;
-            animation: float 6s ease-in-out infinite;
-            z-index: 0;
-        }
-
-        body::after {
-            content: '🌺';
-            position: fixed;
-            bottom: 15%;
-            right: 8%;
-            font-size: 5rem;
-            opacity: 0.1;
-            animation: float 8s ease-in-out infinite reverse;
-            z-index: 0;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(20px); }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        .container {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .thank-you-card {
-            background: white;
-            border-radius: 20px;
-            padding: 50px 40px;
-            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.1);
-            animation: fadeInUp 0.8s ease-out;
-            border: 2px solid rgba(46, 125, 50, 0.2);
-            border-top: 4px solid #2e7d32;
-            text-align: center;
-        }
-
-        .success-icon {
-            font-size: 5rem;
-            margin-bottom: 20px;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        .decorative-line {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin: 20px 0;
-            font-size: 1.5rem;
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            color: #2e7d32;
-            font-weight: normal;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .message {
-            font-size: 1.2rem;
-            color: #6b8e23;
-            line-height: 1.8;
-            margin: 25px 0;
-        }
-
-        .event-reminder {
-            background: linear-gradient(135deg, #e8f0dc 0%, #f5f9f0 100%);
-            padding: 25px;
-            border-radius: 15px;
-            margin: 30px 0;
-            border: 2px solid rgba(46, 125, 50, 0.2);
-        }
-
-        .event-reminder p {
-            font-size: 1.1rem;
-            margin: 10px 0;
-            color: #2d3a24;
-        }
-
-        .event-reminder strong {
-            color: #2e7d32;
-        }
-
-        .event-reminder a {
-            color: #2e7d32;
-            text-decoration: none;
-            border-bottom: 1px dashed #2e7d32;
-            transition: all 0.3s ease;
-        }
-
-        .event-reminder a:hover {
-            color: #d4af37;
-            border-bottom-color: #d4af37;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 40px;
-            background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
-        }
-
-        .back-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(46, 125, 50, 0.4);
-            background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
-        }
-
-        .couple-names {
-            font-size: 1.5rem;
-            color: #2e7d32;
-            font-style: italic;
-            margin-top: 20px;
-        }
-
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            .thank-you-card {
-                padding: 30px 20px;
-            }
-
-            .success-icon {
-                font-size: 4rem;
-            }
-        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Lato',sans-serif; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:40px 20px; position:relative; overflow-x:hidden; background-color:#1e3a20; }
+        .hero-bg { position:fixed; inset:0; background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Bari_-_Basilica_di_San_Nicola.jpg/1280px-Bari_-_Basilica_di_San_Nicola.jpg'); background-size:cover; background-position:center 20%; animation:heroZoom 25s ease-in-out infinite alternate; z-index:0; }
+        .hero-overlay { position:fixed; inset:0; background:linear-gradient(180deg,rgba(5,18,5,.55),rgba(8,30,8,.80)); z-index:1; }
+        @keyframes heroZoom { from{transform:scale(1)} to{transform:scale(1.07)} }
+        #petals { position:fixed; inset:0; pointer-events:none; z-index:2; overflow:hidden; }
+        .petal { position:absolute; top:-30px; border-radius:50% 0 50% 0; opacity:0; animation:petalFall linear infinite; }
+        @keyframes petalFall { 0%{top:-30px;opacity:.7;transform:rotate(0deg) translateX(0)} 30%{transform:rotate(120deg) translateX(40px)} 60%{opacity:.4;transform:rotate(240deg) translateX(-30px)} 100%{top:110vh;opacity:0;transform:rotate(400deg) translateX(20px)} }
+        .container { position:relative; z-index:3; background:rgba(255,255,255,.97); border-radius:20px; padding:55px 48px; max-width:580px; width:100%; box-shadow:0 15px 60px rgba(0,0,0,.35); border-top:4px solid #c9a84c; animation:fadeUp .9s ease-out; text-align:center; }
+        .success-icon { font-size:4.5rem; display:block; margin-bottom:18px; animation:popIn .6s cubic-bezier(.34,1.56,.64,1) .2s both; }
+        @keyframes popIn { from{transform:scale(0);opacity:0} to{transform:scale(1);opacity:1} }
+        .pre-title { font-family:'Great Vibes',cursive; font-size:1.9rem; color:#c9a84c; margin-bottom:6px; }
+        h1 { font-family:'Playfair Display',serif; color:#1a4a1e; font-size:2.6rem; font-weight:400; letter-spacing:4px; margin-bottom:14px; }
+        .divider { width:55px; height:1.5px; background:linear-gradient(90deg,transparent,#c9a84c,transparent); margin:0 auto 26px; }
+        .message { font-family:'Playfair Display',serif; font-size:1.15rem; font-style:italic; color:#4a5e3a; line-height:1.85; margin-bottom:32px; }
+        .reminder { background:linear-gradient(135deg,rgba(201,168,76,.07),rgba(46,125,50,.04)); border:1px solid rgba(201,168,76,.3); border-radius:14px; padding:26px 24px; margin-bottom:30px; text-align:left; }
+        .reminder-row { display:flex; align-items:flex-start; gap:14px; padding:10px 0; border-bottom:1px solid rgba(201,168,76,.15); }
+        .reminder-row:last-child { border-bottom:none; }
+        .r-ico { font-size:1.3rem; flex-shrink:0; width:32px; text-align:center; padding-top:2px; }
+        .r-body strong { display:block; font-size:.7rem; letter-spacing:2px; text-transform:uppercase; color:#6b8e23; margin-bottom:3px; }
+        .r-body span, .r-body a { font-family:'Playfair Display',serif; font-size:1rem; color:#2d3a24; }
+        .r-body a { color:#2e7d32; text-decoration:none; border-bottom:1px dashed rgba(46,125,50,.4); transition:all .3s; }
+        .r-body a:hover { color:#c9a84c; border-bottom-color:#c9a84c; }
+        .couple-sign { font-family:'Great Vibes',cursive; font-size:2rem; color:#c9a84c; display:block; margin-bottom:24px; }
+        .back-link { display:inline-block; font-family:'Lato',sans-serif; font-size:.8rem; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:#1a4a1e; text-decoration:none; padding:13px 30px; border:1.5px solid #2e7d32; border-radius:40px; transition:all .3s ease; }
+        .back-link:hover { background:#2e7d32; color:#fff; box-shadow:0 6px 20px rgba(46,125,50,.28); transform:translateY(-2px); }
+        @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:none} }
+        @media(max-width:500px) { .container{padding:38px 22px} h1{font-size:2rem} }
     </style>
 </head>
 <body>
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div id="petals"></div>
     <div class="container">
-        <div class="thank-you-card">
-            <div class="success-icon">💌</div>
-
-            <div class="decorative-line">
-                <span>🌿</span>
-                <span>🌺</span>
-                <span>🌿</span>
+        <span class="success-icon">&#128140;</span>
+        <p class="pre-title">grazie mille!</p>
+        <h1>Grazie!</h1>
+        <div class="divider"></div>
+        <p class="message">La tua conferma &egrave; stata ricevuta con successo.<br>Non vediamo l&apos;ora di festeggiare insieme a te!</p>
+        <div class="reminder">
+            <div class="reminder-row">
+                <div class="r-ico">&#128197;</div>
+                <div class="r-body"><strong>Ti aspettiamo il</strong><span>24 Settembre 2026</span></div>
             </div>
-
-            <h1>Grazie!</h1>
-
-            <p class="message">
-                La tua conferma è stata ricevuta con successo.<br>
-                Non vediamo l'ora di festeggiare insieme a te!
-            </p>
-
-            <div class="event-reminder">
-                <p><strong>📅 Ti aspettiamo il:</strong> 24 Settembre 2026</p>
-                <p><strong>⛪ Cerimonia:</strong> <a href="https://maps.app.goo.gl/Mmm5AadB6bUFoiXd8" target="_blank" rel="noopener">Basilica di San Nicola</a> - ore 10:30</p>
-                <p><strong>🍽️ Ricevimento:</strong> <a href="https://maps.app.goo.gl/gyQPPhtSWLvdgnvj6" target="_blank" rel="noopener">Sala San Tommaso Ricevimenti</a></p>
+            <div class="reminder-row">
+                <div class="r-ico">&#9962;</div>
+                <div class="r-body">
+                    <strong>Cerimonia</strong>
+                    <a href="https://maps.app.goo.gl/Mmm5AadB6bUFoiXd8" target="_blank" rel="noopener">Basilica di San Nicola, Bari</a>
+                    <span> &mdash; ore 10:30</span>
+                </div>
             </div>
-
-            <div class="decorative-line">
-                <span>🌴</span>
-                <span>🌺</span>
-                <span>🌴</span>
+            <div class="reminder-row">
+                <div class="r-ico">&#127869;</div>
+                <div class="r-body">
+                    <strong>Ricevimento</strong>
+                    <a href="https://maps.app.goo.gl/gyQPPhtSWLvdgnvj6" target="_blank" rel="noopener">Sala San Tommaso Ricevimenti</a>
+                </div>
             </div>
-
-            <p class="couple-names">Nicola & Anastasia</p>
-
-            <a href="/" class="back-link">Torna alla Home</a>
         </div>
+        <span class="couple-sign">Nicola &amp; Anastasia</span>
+        <a href="index.html" class="back-link">&#8592; Torna alla Home</a>
     </div>
+    <script>
+        const colors = [['#f9c6d0','#e8869a'],['#fde2c8','#f5b98e'],['#e8f5d4','#b5d67a'],['#fce4ec','#f48fb1']];
+        const pc = document.getElementById('petals');
+        for (let i = 0; i < 28; i++) {
+            const p = document.createElement('div');
+            p.className = 'petal';
+            const c = colors[i % colors.length];
+            p.style.cssText = 'left:' + (Math.random()*100) + 'vw;width:' + (7+Math.random()*11) + 'px;height:' + (7+Math.random()*11) + 'px;background:radial-gradient(ellipse at 35% 35%,' + c[0] + ',' + c[1] + ');animation-duration:' + (8+Math.random()*10) + 's;animation-delay:' + (Math.random()*6) + 's';
+            pc.appendChild(p);
+        }
+    </script>
 </body>
 </html>

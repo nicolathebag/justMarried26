@@ -3,473 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ðŸ’š Nozze di Nicola & Anastasia</title>
+    <title>Nozze di Nicola &amp; Anastasia &middot; 24 Settembre 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body { font-family:'Lato',sans-serif; background:#f5f0e8; color:#2d3a24; overflow-x:hidden; }
+
+        /* PETALS */
+        #petals { position:fixed; inset:0; pointer-events:none; z-index:3; overflow:hidden; }
+        .petal { position:absolute; top:-30px; border-radius:50% 0 50% 0; opacity:0; animation:petalFall linear infinite; }
+        @keyframes petalFall {
+            0%   { top:-30px; opacity:.7; transform:rotate(0deg) translateX(0); }
+            30%  { transform:rotate(120deg) translateX(40px); }
+            60%  { opacity:.4; transform:rotate(240deg) translateX(-30px); }
+            100% { top:110vh; opacity:0; transform:rotate(400deg) translateX(20px); }
         }
 
-        body {
-            font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #f5f9f0 0%, #e8f0dc 100%);
-            color: #2d3a24;
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
+        /* HERO */
+        .hero { position:relative; height:100vh; min-height:580px; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; }
+        .hero-bg {
+            position:absolute; inset:0;
+            background-color:#1e3a20;
+            background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Bari_-_Basilica_di_San_Nicola.jpg/1280px-Bari_-_Basilica_di_San_Nicola.jpg');
+            background-size:cover; background-position:center 20%;
+            animation:heroZoom 25s ease-in-out infinite alternate;
         }
+        @keyframes heroZoom { from{transform:scale(1)} to{transform:scale(1.07)} }
+        .hero-overlay { position:absolute; inset:0; background:linear-gradient(180deg,rgba(5,18,5,.45) 0%,rgba(8,30,8,.68) 45%,rgba(4,15,4,.82) 100%); }
+        .hero-content { position:relative; z-index:2; padding:20px; }
+        .hero-pre { font-family:'Great Vibes',cursive; font-size:clamp(1.4rem,3vw,2.2rem); color:#c9a84c; letter-spacing:2px; margin-bottom:8px; opacity:0; animation:fadeDown .9s ease-out .2s forwards; }
+        .hero-names { font-family:'Playfair Display',serif; font-size:clamp(2.8rem,8vw,6.2rem); color:#fff; font-weight:400; letter-spacing:6px; line-height:1.15; text-shadow:0 4px 30px rgba(0,0,0,.55); opacity:0; animation:fadeUp 1.1s ease-out .45s forwards; }
+        .hero-amp { font-family:'Great Vibes',cursive; font-size:clamp(2rem,5vw,4.2rem); color:#c9a84c; display:block; line-height:1.1; }
+        .hero-divider { width:0; height:1.5px; background:linear-gradient(90deg,transparent,#c9a84c,transparent); margin:22px auto; opacity:0; animation:expandW .9s ease-out .9s forwards; }
+        .hero-date { font-size:clamp(.8rem,2vw,.95rem); color:rgba(255,255,255,.88); letter-spacing:7px; text-transform:uppercase; opacity:0; animation:fadeUp .9s ease-out 1.1s forwards; }
+        .hero-church { font-family:'Great Vibes',cursive; font-size:clamp(1.2rem,3vw,1.9rem); color:rgba(201,168,76,.9); margin-top:10px; opacity:0; animation:fadeUp .9s ease-out 1.4s forwards; }
+        .scroll-cue { position:absolute; bottom:32px; left:50%; transform:translateX(-50%); z-index:2; display:flex; flex-direction:column; align-items:center; gap:4px; opacity:0; animation:fadeIn .8s ease-out 2s forwards; }
+        .scroll-cue span { display:block; width:18px; height:18px; border-right:2px solid rgba(255,255,255,.6); border-bottom:2px solid rgba(255,255,255,.6); transform:rotate(45deg); animation:blink 1.8s ease-in-out infinite; }
+        .scroll-cue span:nth-child(2){animation-delay:.2s} .scroll-cue span:nth-child(3){animation-delay:.4s}
+        @keyframes blink{0%,100%{opacity:.2}50%{opacity:.9}}
 
-        /* Decorazioni floreali di sfondo */
-        body::before {
-            content: 'ðŸŒ¿';
-            position: fixed;
-            top: 10%;
-            left: 5%;
-            font-size: 4rem;
-            opacity: 0.12;
-            animation: float 6s ease-in-out infinite;
-            z-index: 0;
-        }
+        /* KEYFRAMES */
+        @keyframes fadeUp   { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:none} }
+        @keyframes fadeDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:none} }
+        @keyframes fadeIn   { from{opacity:0} to{opacity:1} }
+        @keyframes expandW  { from{width:0;opacity:0} to{width:90px;opacity:1} }
 
-        body::after {
-            content: 'ðŸŒº';
-            position: fixed;
-            bottom: 15%;
-            right: 8%;
-            font-size: 5rem;
-            opacity: 0.1;
-            animation: float 8s ease-in-out infinite reverse;
-            z-index: 0;
-        }
+        /* MAIN */
+        .main-wrap { max-width:920px; margin:0 auto; padding:70px 20px 80px; position:relative; z-index:5; }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(20px); }
-        }
+        /* Dream link */
+        .dream-link { text-align:center; margin-bottom:50px; }
+        .dream-link a { display:inline-block; font-family:'Playfair Display',serif; font-style:italic; font-size:1.1rem; color:#1a4a1e; border:1.5px solid #c9a84c; border-radius:40px; padding:13px 32px; text-decoration:none; letter-spacing:1px; transition:all .3s ease; }
+        .dream-link a:hover { background:#c9a84c; color:#fff; box-shadow:0 6px 22px rgba(201,168,76,.38); transform:translateY(-2px); }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        /* Cards */
+        .card { background:rgba(255,255,255,.97); border-radius:18px; padding:50px 45px; margin-bottom:36px; box-shadow:0 8px 40px rgba(46,125,50,.10); border-top:4px solid #c9a84c; opacity:0; transform:translateY(36px); transition:opacity .75s ease,transform .75s ease; }
+        .card.show { opacity:1; transform:none; }
+        .card-title { font-family:'Playfair Display',serif; font-size:1.65rem; color:#1a4a1e; text-align:center; font-weight:400; letter-spacing:4px; text-transform:uppercase; margin-bottom:14px; }
+        .card-divider { width:55px; height:1.5px; background:linear-gradient(90deg,transparent,#c9a84c,transparent); margin:0 auto 38px; }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
+        /* Sposi */
+        .sposi-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+        .sposo { text-align:center; padding:32px 20px; background:linear-gradient(135deg,rgba(201,168,76,.06),rgba(46,125,50,.04)); border:1px solid rgba(201,168,76,.28); border-radius:14px; transition:transform .3s,box-shadow .3s; }
+        .sposo:hover { transform:translateY(-4px); box-shadow:0 10px 28px rgba(201,168,76,.18); }
+        .sposo-icon { font-size:2.6rem; display:block; margin-bottom:14px; }
+        .sposo h3 { font-family:'Playfair Display',serif; font-size:1.45rem; font-weight:400; color:#1a4a1e; letter-spacing:2px; }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            position: relative;
-            z-index: 1;
-        }
+        /* Details */
+        .detail { display:flex; align-items:flex-start; gap:18px; padding:18px 0; border-bottom:1px solid rgba(201,168,76,.18); }
+        .detail:last-child { border-bottom:none; }
+        .detail-ico { font-size:1.5rem; flex-shrink:0; width:40px; text-align:center; padding-top:3px; }
+        .detail-body strong { display:block; font-size:.72rem; letter-spacing:2.5px; text-transform:uppercase; color:#6b8e23; margin-bottom:5px; }
+        .detail-body span, .detail-body a { font-family:'Playfair Display',serif; font-size:1.05rem; color:#2d3a24; }
+        .detail-body a { color:#2e7d32; text-decoration:none; border-bottom:1px dashed rgba(46,125,50,.45); transition:all .3s; }
+        .detail-body a:hover { color:#c9a84c; border-bottom-color:#c9a84c; }
 
-        header {
-            text-align: center;
-            margin-bottom: 50px;
-            animation: fadeInUp 1s ease-out;
-        }
+        /* Form */
+        form { display:grid; gap:20px; max-width:620px; margin:0 auto; }
+        .fg { display:grid; gap:8px; }
+        label { font-size:.72rem; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:#1a4a1e; }
+        input[type=text], input[type=email], input[type=number], select, textarea { padding:13px 18px; border:1.5px solid rgba(46,125,50,.22); border-radius:8px; font-family:'Playfair Display',serif; font-size:1rem; color:#2d3a24; background:#faf8f0; transition:all .3s; }
+        input:focus, select:focus, textarea:focus { outline:none; border-color:#c9a84c; background:#fff; box-shadow:0 0 0 3px rgba(201,168,76,.15); }
+        textarea { resize:vertical; min-height:95px; }
+        .btn-submit { justify-self:center; padding:15px 55px; background:linear-gradient(135deg,#1a4a1e,#2e7d32); color:#fff; border:none; border-radius:50px; font-family:'Lato',sans-serif; font-weight:700; font-size:.88rem; letter-spacing:3px; text-transform:uppercase; cursor:pointer; transition:all .35s ease; box-shadow:0 6px 22px rgba(26,74,30,.32); }
+        .btn-submit:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(26,74,30,.44); }
+        #message { text-align:center; font-family:'Playfair Display',serif; font-size:1rem; min-height:24px; }
 
-        .decorative-line {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin: 15px 0;
-            font-size: 1.8rem;
-            animation: pulse 3s ease-in-out infinite;
-        }
-
-        h1 {
-            font-size: 3.8rem;
-            color: #2e7d32;
-            font-weight: normal;
-            letter-spacing: 4px;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .subtitle {
-            font-size: 1.3rem;
-            color: #6b8e23;
-            font-style: italic;
-            margin-top: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 300;
-        }
-
-        section {
-            background: white;
-            border-radius: 15px;
-            padding: 40px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 20px rgba(46, 125, 50, 0.1);
-            animation: fadeInUp 0.8s ease-out;
-            border: 2px solid rgba(46, 125, 50, 0.2);
-            border-top-width: 4px;
-            border-top-color: #2e7d32;
-            position: relative;
-        }
-
-        section:nth-child(2) { animation-delay: 0.2s; }
-        section:nth-child(3) { animation-delay: 0.4s; }
-        section:nth-child(4) { animation-delay: 0.6s; }
-
-        h2 {
-            color: #2e7d32;
-            font-size: 2rem;
-            margin-bottom: 25px;
-            text-align: center;
-            font-weight: normal;
-            position: relative;
-            padding-bottom: 20px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-size: 1.8rem;
-        }
-
-        h2::before {
-            content: 'ðŸŒ¿';
-            display: block;
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        h2::after {
-            content: 'ðŸŒº';
-            display: block;
-            font-size: 1rem;
-            margin-top: 10px;
-        }
-
-        .sposi-info {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-top: 25px;
-        }
-
-        .sposo-card {
-            padding: 30px;
-            background: linear-gradient(135deg, rgba(107, 142, 35, 0.08) 0%, rgba(107, 142, 35, 0.04) 100%);
-            border: 2px solid rgba(46, 125, 50, 0.2);
-            border-radius: 10px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 2px 10px rgba(46, 125, 50, 0.1);
-        }
-
-        .sposo-card h3 {
-            color: #2e7d32;
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-            margin-top: 10px;
-            font-weight: normal;
-            letter-spacing: 2px;
-        }
-
-        .sposo-card p {
-            color: #6b8e23;
-            line-height: 1.7;
-            font-size: 0.95rem;
-        }
-
-        .event-details {
-            background: linear-gradient(135deg, rgba(107, 142, 35, 0.08) 0%, rgba(107, 142, 35, 0.04) 100%);
-            padding: 35px;
-            border-radius: 10px;
-            text-align: center;
-            margin-top: 25px;
-            border: 2px solid rgba(46, 125, 50, 0.2);
-            box-shadow: 0 2px 10px rgba(46, 125, 50, 0.1);
-            position: relative;
-        }
-
-        .event-details p {
-            font-size: 1.1rem;
-            margin: 15px 0;
-            color: #2d3a24;
-        }
-
-        .event-details strong {
-            color: #2e7d32;
-            font-size: 1.15rem;
-            font-weight: normal;
-        }
-
-        .residence-info {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(46, 125, 50, 0.2);
-        }
-
-        form {
-            display: grid;
-            gap: 18px;
-            max-width: 600px;
-            margin: 30px auto 0;
-        }
-
-        .form-group {
-            display: grid;
-            gap: 10px;
-        }
-
-        label {
-            color: #2e7d32;
-            font-weight: 500;
-            font-size: 0.95rem;
-            letter-spacing: 1px;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="number"],
-        select,
-        textarea {
-            padding: 12px 15px;
-            border: 2px solid rgba(46, 125, 50, 0.3);
-            border-radius: 5px;
-            font-family: 'Georgia', serif;
-            font-size: 1rem;
-            color: #2d3a24;
-            transition: all 0.3s ease;
-            background: rgba(245, 249, 240, 0.8);
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
-
-        input[type="text"]::placeholder,
-        input[type="email"]::placeholder,
-        textarea::placeholder {
-            color: #a8b89f;
-        }
-
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        input[type="number"]:focus,
-        select:focus,
-        textarea:focus {
-            outline: none;
-            border-color: #2e7d32;
-            background: white;
-            box-shadow: 
-                0 0 15px rgba(46, 125, 50, 0.2),
-                inset 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        button {
-            padding: 15px 40px;
-            background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-family: 'Georgia', serif;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 10px;
-            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(46, 125, 50, 0.4);
-            background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
-        }
-
-        button:active {
-            transform: translateY(0);
-        }
-
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            .sposi-info {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 25px;
-            }
-
-            h2 {
-                font-size: 1.4rem;
-            }
-        }
-
-        p {
-            line-height: 1.8;
-        }
-
-        p:not(.event-details p) {
-            margin-bottom: 12px;
-        }
-
-        /* Stile link */
-        a {
-            color: #2e7d32;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        a:hover {
-            color: #4caf50;
-            text-decoration: underline;
-        }
-
+        @media(max-width:600px) { .sposi-grid{grid-template-columns:1fr} .card{padding:30px 18px} .hero-names{letter-spacing:2px} }
     </style>
 </head>
 <body>
+    <div id="petals"></div>
 
-    <div class="container">
-        <header>
-            <div class="decorative-line">
-                <span>ðŸŒ¿</span>
-                <span>ðŸŒº</span>
-                <span>ðŸŒ¿</span>
-            </div>
-            <h1>Nicola & Anastasia</h1>
-            <p class="subtitle" data-i18n="subtitle">Celebriamo l'amore</p>
-            <div class="decorative-line">
-                <span>ðŸŒ´</span>
-                <span>ðŸŒº</span>
-                <span>ðŸŒ´</span>
-            </div>
-        </header>
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-pre">il matrimonio di</p>
+            <h1 class="hero-names">
+                Nicola
+                <span class="hero-amp">&amp;</span>
+                Anastasia
+            </h1>
+            <div class="hero-divider"></div>
+            <p class="hero-date">24 &middot; Settembre &middot; 2026</p>
+            <p class="hero-church">Basilica di San Nicola, Bari</p>
+        </div>
+        <div class="scroll-cue" aria-hidden="true"><span></span><span></span><span></span></div>
+    </header>
 
-        <div style="text-align:center; margin-bottom: 35px; margin-top: 10px;">
-            <a href="Partecipa.html" style="font-size:1.15rem; color:#2e7d32; text-decoration:underline; font-weight:600;">ðŸŒŸ Partecipa a realizzare i nostri sogni</a>
+    <main class="main-wrap">
+        <div class="dream-link">
+            <a href="Partecipa.html">&#10024; Partecipa a realizzare i nostri sogni</a>
         </div>
 
-        <section style="margin-bottom: 40px;">
-            <h2 data-i18n="section_sposi">I Novelli Sposi</h2>
-            <div class="sposi-info">
-                <div class="sposo-card">
+        <article class="card">
+            <h2 class="card-title">I Novelli Sposi</h2>
+            <div class="card-divider"></div>
+            <div class="sposi-grid">
+                <div class="sposo">
+                    <span class="sposo-icon">&#129333;</span>
                     <h3>Nicola Losacco</h3>
                 </div>
-                <div class="sposo-card">
+                <div class="sposo">
+                    <span class="sposo-icon">&#128144;</span>
                     <h3>Anastasia Khalizova</h3>
                 </div>
             </div>
-        </section>
+        </article>
 
-        <section style="margin-bottom: 40px;">
-            <h2 data-i18n="section_dettagli">Dettagli Evento</h2>
-            <div class="event-details">
-                <p><strong>ðŸ“… <span data-i18n="data_label">Data:</span></strong> 24 Settembre 2026</p>
-                <p><strong>â›ª <span data-i18n="cerimonia_label">Cerimonia:</span></strong> <a href="https://maps.app.goo.gl/Mmm5AadB6bUFoiXd8" target="_blank" rel="noopener">Basilica di San Nicola</a> - ore 10:30</p>
-                <p><strong>ðŸ½ï¸ <span data-i18n="ricevimento_label">Ricevimento:</span></strong> <a href="https://maps.app.goo.gl/gyQPPhtSWLvdgnvj6" target="_blank" rel="noopener">Sala San Tommaso Ricevimenti</a></p>
-                <p><strong>ðŸ‘— <span data-i18n="dress_code_label">Dress Code:</span></strong> Elegante</p>
-                <div class="residence-info">
-                    <p><strong>ðŸ  <span data-i18n="residenza_label">Residenza Sposi:</span></strong> Via Bitritto 96/A, Bari</p>
+        <article class="card">
+            <h2 class="card-title">Dettagli dell&#39;Evento</h2>
+            <div class="card-divider"></div>
+            <div class="detail">
+                <div class="detail-ico">&#128197;</div>
+                <div class="detail-body"><strong>Data</strong><span>24 Settembre 2026</span></div>
+            </div>
+            <div class="detail">
+                <div class="detail-ico">&#9962;</div>
+                <div class="detail-body">
+                    <strong>Cerimonia</strong>
+                    <a href="https://maps.app.goo.gl/Mmm5AadB6bUFoiXd8" target="_blank" rel="noopener">Basilica di San Nicola, Bari</a>
+                    <span> &mdash; ore 10:30</span>
                 </div>
             </div>
-        </section>
-
-        <section>
-            <h2 data-i18n="section_conferma">Conferma Presenza</h2>
-            <p style="text-align: center; color: #6b8e23; margin-bottom: 25px;" data-i18n="form_intro">Compilate il modulo per confermare la vostra partecipazione</p>
-            <form id="rsvpForm" onsubmit="handleFormSubmit(event)">
-                <div class="form-group">
-                    <label data-i18n="form_nome">Nome & Cognome *</label>
-                    <input type="text" id="nome" data-i18n-placeholder="form_nome_placeholder" placeholder="Inserisci il tuo nome completo" required>
+            <div class="detail">
+                <div class="detail-ico">&#127869;</div>
+                <div class="detail-body">
+                    <strong>Ricevimento</strong>
+                    <a href="https://maps.app.goo.gl/gyQPPhtSWLvdgnvj6" target="_blank" rel="noopener">Sala San Tommaso Ricevimenti</a>
                 </div>
+            </div>
+            <div class="detail">
+                <div class="detail-ico">&#128535;</div>
+                <div class="detail-body"><strong>Dress Code</strong><span>Elegante</span></div>
+            </div>
+            <div class="detail">
+                <div class="detail-ico">&#127968;</div>
+                <div class="detail-body"><strong>Residenza Sposi</strong><span>Via Bitritto 96/A, Bari</span></div>
+            </div>
+        </article>
 
-                <div class="form-group">
-                    <label data-i18n="form_email">Email</label>
-                    <input type="email" id="email" data-i18n-placeholder="form_email_placeholder" placeholder="La tua email">
+        <article class="card">
+            <h2 class="card-title">Conferma Presenza</h2>
+            <div class="card-divider"></div>
+            <p style="text-align:center;font-family:'Playfair Display',serif;font-style:italic;color:#6b8e23;margin-bottom:28px;font-size:1.05rem;">Compilate il modulo per confermare la vostra partecipazione</p>
+            <form id="rsvpForm" onsubmit="handleSubmit(event)">
+                <div class="fg">
+                    <label>Nome &amp; Cognome *</label>
+                    <input type="text" id="nome" placeholder="Il tuo nome completo" required>
                 </div>
-
-                <div class="form-group">
-                    <label data-i18n="form_presenza">Confermi la tua presenza? *</label>
+                <div class="fg">
+                    <label>Email</label>
+                    <input type="email" id="email" placeholder="La tua email">
+                </div>
+                <div class="fg">
+                    <label>Confermi la tua presenza? *</label>
                     <select id="presenza" required>
-                        <option value="">-- <span data-i18n="form_select_placeholder">Seleziona</span> --</option>
-                        <option value="si" data-i18n="form_si">âœ“ SÃ¬, confermo</option>
-                        <option value="no" data-i18n="form_no">âœ— No, purtroppo non posso</option>
+                        <option value="">&#8212; Seleziona &#8212;</option>
+                        <option value="si">&#10003; S&igrave;, confermo</option>
+                        <option value="no">&#10007; No, purtroppo non posso</option>
                     </select>
                 </div>
-
-                <div class="form-group">
-                    <label data-i18n="form_ospiti">Numero di ospiti (incluso te)</label>
+                <div class="fg">
+                    <label>Numero ospiti (incluso te)</label>
                     <input type="number" id="ospiti" min="1" max="10" value="1">
                 </div>
-
-                <div class="form-group">
-                    <label data-i18n="form_note">Allergie / Note</label>
-                    <textarea id="note" data-i18n-placeholder="form_note_placeholder" placeholder="Scrivi qui eventuali allergie o messaggi speciali..."></textarea>
+                <div class="fg">
+                    <label>Allergie / Note</label>
+                    <textarea id="note" placeholder="Eventuali allergie o messaggi speciali..."></textarea>
                 </div>
-
-                <button type="submit" id="submitBtn" data-i18n="form_submit">ðŸ’Œ Invia RSVP</button>
-                <div id="message" style="margin-top: 15px; text-align: center; font-size: 0.95rem;"></div>
+                <button type="submit" id="submitBtn" class="btn-submit">&#128140; Invia RSVP</button>
+                <div id="message"></div>
             </form>
-        </section>
-    </div>
+        </article>
+    </main>
 
     <script>
+        const observer = new IntersectionObserver(
+            entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); }),
+            { threshold: 0.12 }
+        );
+        document.querySelectorAll('.card').forEach(c => observer.observe(c));
+
+        const colors = [['#f9c6d0','#e8869a'],['#fde2c8','#f5b98e'],['#e8f5d4','#b5d67a'],['#fce4ec','#f48fb1']];
+        const pc = document.getElementById('petals');
+        for (let i = 0; i < 22; i++) {
+            const p = document.createElement('div');
+            p.className = 'petal';
+            const c = colors[i % colors.length];
+            p.style.cssText = 'left:' + (Math.random()*100) + 'vw;width:' + (7+Math.random()*11) + 'px;height:' + (7+Math.random()*11) + 'px;background:radial-gradient(ellipse at 35% 35%,' + c[0] + ',' + c[1] + ');animation-duration:' + (9+Math.random()*12) + 's;animation-delay:' + (Math.random()*18) + 's';
+            pc.appendChild(p);
+        }
+
         const FORMSPREE_ID = 'xeeeerlo';
-
-        async function handleFormSubmit(event) {
-            event.preventDefault();
-
-            const submitBtn = document.getElementById('submitBtn');
-            const messageDiv = document.getElementById('message');
-            const form = document.getElementById('rsvpForm');
-
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'â³ Invio in corso...';
-            messageDiv.innerHTML = '';
-
+        async function handleSubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const msg = document.getElementById('message');
+            btn.disabled = true; btn.textContent = 'Invio in corso...'; msg.textContent = '';
             try {
-                const formDataObj = new FormData();
-                formDataObj.append('nome', document.getElementById('nome').value);
-                formDataObj.append('email', document.getElementById('email').value);
-                formDataObj.append('presenza', document.getElementById('presenza').value);
-                formDataObj.append('ospiti', document.getElementById('ospiti').value);
-                formDataObj.append('note', document.getElementById('note').value);
-
-                const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-                    method: 'POST',
-                    body: formDataObj,
-                    headers: { 'Accept': 'application/json' }
-                });
-
-                if (!response.ok) {
-                    throw new Error(`Errore: ${response.status}`);
-                }
-
-                messageDiv.innerHTML = 'âœ“ Grazie! La tua conferma Ã¨ stata ricevuta con successo.';
-                messageDiv.style.color = '#2e7d32';
-                form.reset();
-
-                setTimeout(() => {
-                    window.location.href = 'grazie.html';
-                }, 2000);
-
-            } catch (error) {
-                messageDiv.innerHTML = `âœ— ${error.message}. Riprova per favore.`;
-                messageDiv.style.color = '#d32f2f';
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'ðŸ’Œ Invia RSVP';
+                const fd = new FormData();
+                ['nome','email','presenza','ospiti','note'].forEach(id => { fd.append(id, document.getElementById(id).value); });
+                const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, { method:'POST', body:fd, headers:{Accept:'application/json'} });
+                if (!res.ok) throw new Error('Errore ' + res.status);
+                msg.textContent = '\u2713 Grazie! La tua conferma \u00e8 stata ricevuta.';
+                msg.style.color = '#2e7d32';
+                document.getElementById('rsvpForm').reset();
+                setTimeout(function(){ window.location.href='grazie.html'; }, 2000);
+            } catch(err) {
+                msg.textContent = err.message + '. Riprova per favore.';
+                msg.style.color = '#d32f2f';
+                btn.disabled = false; btn.textContent = 'Invia RSVP';
             }
         }
     </script>
