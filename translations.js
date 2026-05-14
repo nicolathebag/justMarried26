@@ -43,7 +43,7 @@
       'partecipa-h1':       'Partecipa a realizzare i nostri sogni',
       'partecipa-p':        'Se desideri contribuire al nostro viaggio insieme, puoi farlo tramite un regalo libero.<br>Grazie di cuore per il tuo pensiero!',
       'iban-lbl-nicola':    'IBAN · Nicola Losacco',
-      'iban-lbl-anastasia': 'IBAN · Anastasia Khalizova',
+      'iban-lbl-Anastasiia': 'IBAN · Anastasiia Khalizova',
       'back-link':          '← Torna alla Home',
 
       /* ── grazie.html ── */
@@ -54,7 +54,7 @@
       'reminder-cerimonia-lbl': 'Cerimonia',
       'reminder-ricevimento-lbl': 'Ricevimento',
       'reminder-cerimonia-sfx': ' — ore 10:30',
-      'couple-sign':        'Nicola & Anastasia',
+      'couple-sign':        'Nicola & Anastasiia',
       'grazie-back':        '← Torna alla Home',
     },
     ru: {
@@ -99,7 +99,7 @@
       'partecipa-h1':       'Помогите воплотить наши мечты',
       'partecipa-p':        'Если вы хотите внести вклад в наше совместное путешествие, вы можете сделать это через свободный подарок.<br>Огромное спасибо за ваш жест!',
       'iban-lbl-nicola':    'IBAN · Nicola Losacco',
-      'iban-lbl-anastasia': 'IBAN · Anastasia Khalizova',
+      'iban-lbl-Anastasiia': 'IBAN · Anastasiia Khalizova',
       'back-link':          '← На главную',
 
       /* ── grazie.html ── */
@@ -110,7 +110,7 @@
       'reminder-cerimonia-lbl': 'Церемония',
       'reminder-ricevimento-lbl': 'Банкет',
       'reminder-cerimonia-sfx': ' — в 10:30',
-      'couple-sign':        'Nicola & Anastasia',
+      'couple-sign':        'Nicola & Anastasiia',
       'grazie-back':        '← На главную',
     }
   };
