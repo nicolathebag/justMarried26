@@ -93,35 +93,47 @@
         #message { text-align:center; font-family:'Playfair Display',serif; font-size:1rem; min-height:24px; }
 
         @media(max-width:600px) { .sposi-grid{grid-template-columns:1fr} .card{padding:30px 18px} .hero-names{letter-spacing:2px} }
+
+        /* LANG SWITCHER */
+        #lang-switcher { position:fixed; top:16px; right:18px; z-index:9999; display:flex; gap:6px; }
+        .lang-btn { padding:7px 14px; border-radius:30px; border:1.5px solid rgba(255,255,255,.55); background:rgba(0,0,0,.38); color:#fff; font-family:'Lato',sans-serif; font-size:.75rem; font-weight:700; letter-spacing:1.5px; cursor:pointer; backdrop-filter:blur(6px); transition:all .25s ease; }
+        .lang-btn:hover { background:rgba(201,168,76,.75); border-color:#c9a84c; }
+        .lang-btn.active { background:#c9a84c; border-color:#c9a84c; color:#1a4a1e; }
     </style>
 </head>
 <body>
     <div id="petals"></div>
 
+    <!-- Language switcher (home only) -->
+    <div id="lang-switcher">
+        <button class="lang-btn" id="btn-it" onclick="i18n.setLang('it');updateLangBtns()">🇮🇹 IT</button>
+        <button class="lang-btn" id="btn-ru" onclick="i18n.setLang('ru');updateLangBtns()">🇷🇺 RU</button>
+    </div>
+
     <header class="hero">
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <p class="hero-pre">il matrimonio di</p>
+            <p class="hero-pre" data-i18n="hero-pre">il matrimonio di</p>
             <h1 class="hero-names">
                 Nicola
                 <span class="hero-amp">&amp;</span>
                 Anastasia
             </h1>
             <div class="hero-divider"></div>
-            <p class="hero-date">24 &middot; Settembre &middot; 2026</p>
-            <p class="hero-church">Basilica di San Nicola, Bari</p>
+            <p class="hero-date" data-i18n="hero-date">24 · Settembre · 2026</p>
+            <p class="hero-church" data-i18n="hero-church">Basilica di San Nicola, Bari</p>
         </div>
         <div class="scroll-cue" aria-hidden="true"><span></span><span></span><span></span></div>
     </header>
 
     <main class="main-wrap">
         <div class="dream-link">
-            <a href="Partecipa.html">&#10024; Partecipa a realizzare i nostri sogni</a>
+            <a href="Partecipa.html" data-i18n="dream-link">✨ Partecipa a realizzare i nostri sogni</a>
         </div>
 
         <article class="card">
-            <h2 class="card-title">I Novelli Sposi</h2>
+            <h2 class="card-title" data-i18n="card-sposi">I Novelli Sposi</h2>
             <div class="card-divider"></div>
             <div class="sposi-grid">
                 <div class="sposo">
@@ -136,67 +148,67 @@
         </article>
 
         <article class="card">
-            <h2 class="card-title">Dettagli dell&#39;Evento</h2>
+            <h2 class="card-title" data-i18n="card-dettagli">Dettagli dell'Evento</h2>
             <div class="card-divider"></div>
             <div class="detail">
                 <div class="detail-ico">&#128197;</div>
-                <div class="detail-body"><strong>Data</strong><span>24 Settembre 2026</span></div>
+                <div class="detail-body"><strong data-i18n="detail-data-lbl">Data</strong><span data-i18n="detail-data-val">24 Settembre 2026</span></div>
             </div>
             <div class="detail">
                 <div class="detail-ico">&#9962;</div>
                 <div class="detail-body">
-                    <strong>Cerimonia</strong>
+                    <strong data-i18n="detail-cerimonia-lbl">Cerimonia</strong>
                     <a href="https://maps.app.goo.gl/Mmm5AadB6bUFoiXd8" target="_blank" rel="noopener">Basilica di San Nicola, Bari</a>
-                    <span> &mdash; ore 10:30</span>
+                    <span data-i18n="detail-cerimonia-sfx"> — ore 10:30</span>
                 </div>
             </div>
             <div class="detail">
                 <div class="detail-ico">&#127869;</div>
                 <div class="detail-body">
-                    <strong>Ricevimento</strong>
+                    <strong data-i18n="detail-ricevimento-lbl">Ricevimento</strong>
                     <a href="https://maps.app.goo.gl/gyQPPhtSWLvdgnvj6" target="_blank" rel="noopener">Sala San Tommaso Ricevimenti</a>
                 </div>
             </div>
             <div class="detail">
                 <div class="detail-ico">&#128535;</div>
-                <div class="detail-body"><strong>Dress Code</strong><span>Elegante</span></div>
+                <div class="detail-body"><strong data-i18n="detail-dresscode-lbl">Dress Code</strong><span data-i18n="detail-dresscode-val">Elegante</span></div>
             </div>
             <div class="detail">
                 <div class="detail-ico">&#127968;</div>
-                <div class="detail-body"><strong>Residenza Sposi</strong><span>Via Bitritto 96/A, Bari</span></div>
+                <div class="detail-body"><strong data-i18n="detail-residenza-lbl">Residenza Sposi</strong><span data-i18n="detail-residenza-val">Via Bitritto 96/A, Bari</span></div>
             </div>
         </article>
 
         <article class="card">
-            <h2 class="card-title">Conferma Presenza</h2>
+            <h2 class="card-title" data-i18n="card-rsvp">Conferma Presenza</h2>
             <div class="card-divider"></div>
-            <p style="text-align:center;font-family:'Playfair Display',serif;font-style:italic;color:#6b8e23;margin-bottom:28px;font-size:1.05rem;">Compilate il modulo per confermare la vostra partecipazione</p>
+            <p style="text-align:center;font-family:'Playfair Display',serif;font-style:italic;color:#6b8e23;margin-bottom:28px;font-size:1.05rem;" data-i18n="form-intro">Compilate il modulo per confermare la vostra partecipazione</p>
             <form id="rsvpForm" onsubmit="handleSubmit(event)">
                 <div class="fg">
-                    <label>Nome &amp; Cognome *</label>
-                    <input type="text" id="nome" placeholder="Il tuo nome completo" required>
+                    <label data-i18n="label-nome">Nome & Cognome *</label>
+                    <input type="text" id="nome" placeholder="Il tuo nome completo" data-i18n-ph="placeholder-nome" required>
                 </div>
                 <div class="fg">
-                    <label>Email</label>
-                    <input type="email" id="email" placeholder="La tua email">
+                    <label data-i18n="label-email">Email</label>
+                    <input type="email" id="email" placeholder="La tua email" data-i18n-ph="placeholder-email">
                 </div>
                 <div class="fg">
-                    <label>Confermi la tua presenza? *</label>
+                    <label data-i18n="label-presenza">Confermi la tua presenza? *</label>
                     <select id="presenza" required>
-                        <option value="">&#8212; Seleziona &#8212;</option>
-                        <option value="si">&#10003; S&igrave;, confermo</option>
-                        <option value="no">&#10007; No, purtroppo non posso</option>
+                        <option value="" data-i18n="option-default">— Seleziona —</option>
+                        <option value="si" data-i18n="option-si">✓ Sì, confermo</option>
+                        <option value="no" data-i18n="option-no">✗ No, purtroppo non posso</option>
                     </select>
                 </div>
                 <div class="fg">
-                    <label>Numero ospiti (incluso te)</label>
+                    <label data-i18n="label-ospiti">Numero ospiti (incluso te)</label>
                     <input type="number" id="ospiti" min="1" max="10" value="1">
                 </div>
                 <div class="fg">
-                    <label>Allergie / Note</label>
-                    <textarea id="note" placeholder="Eventuali allergie o messaggi speciali..."></textarea>
+                    <label data-i18n="label-note">Allergie / Note</label>
+                    <textarea id="note" placeholder="Eventuali allergie o messaggi speciali..." data-i18n-ph="placeholder-note"></textarea>
                 </div>
-                <button type="submit" id="submitBtn" class="btn-submit">&#128140; Invia RSVP</button>
+                <button type="submit" id="submitBtn" class="btn-submit" data-i18n="btn-rsvp">💌 Invia RSVP</button>
                 <div id="message"></div>
             </form>
         </article>
@@ -218,6 +230,13 @@
             p.style.cssText = 'left:' + (Math.random()*100) + 'vw;width:' + (7+Math.random()*11) + 'px;height:' + (7+Math.random()*11) + 'px;background:radial-gradient(ellipse at 35% 35%,' + c[0] + ',' + c[1] + ');animation-duration:' + (9+Math.random()*12) + 's;animation-delay:' + (Math.random()*18) + 's';
             pc.appendChild(p);
         }
+
+        function updateLangBtns() {
+            var cur = i18n.current();
+            document.getElementById('btn-it').classList.toggle('active', cur === 'it');
+            document.getElementById('btn-ru').classList.toggle('active', cur === 'ru');
+        }
+        document.addEventListener('DOMContentLoaded', updateLangBtns);
 
         const FORMSPREE_ID = 'xeeeerlo';
         async function handleSubmit(e) {
@@ -241,5 +260,6 @@
             }
         }
     </script>
+    <script src="translations.js"></script>
 </body>
 </html>

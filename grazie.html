@@ -44,33 +44,33 @@
     <div id="petals"></div>
     <div class="container">
         <span class="success-icon">&#128140;</span>
-        <p class="pre-title">grazie mille!</p>
-        <h1>Grazie!</h1>
+        <p class="pre-title" data-i18n="grazie-pre">grazie mille!</p>
+        <h1 data-i18n="grazie-h1">Grazie!</h1>
         <div class="divider"></div>
-        <p class="message">La tua conferma &egrave; stata ricevuta con successo.<br>Non vediamo l&apos;ora di festeggiare insieme a te!</p>
+        <p class="message" data-i18n-html="grazie-msg">La tua conferma &egrave; stata ricevuta con successo.<br>Non vediamo l&apos;ora di festeggiare insieme a te!</p>
         <div class="reminder">
             <div class="reminder-row">
                 <div class="r-ico">&#128197;</div>
-                <div class="r-body"><strong>Ti aspettiamo il</strong><span>24 Settembre 2026</span></div>
+                <div class="r-body"><strong data-i18n="reminder-data-lbl">Ti aspettiamo il</strong><span>24 Settembre 2026</span></div>
             </div>
             <div class="reminder-row">
                 <div class="r-ico">&#9962;</div>
                 <div class="r-body">
-                    <strong>Cerimonia</strong>
+                    <strong data-i18n="reminder-cerimonia-lbl">Cerimonia</strong>
                     <a href="https://maps.app.goo.gl/Mmm5AadB6bUFoiXd8" target="_blank" rel="noopener">Basilica di San Nicola, Bari</a>
-                    <span> &mdash; ore 10:30</span>
+                    <span data-i18n="reminder-cerimonia-sfx"> — ore 10:30</span>
                 </div>
             </div>
             <div class="reminder-row">
                 <div class="r-ico">&#127869;</div>
                 <div class="r-body">
-                    <strong>Ricevimento</strong>
+                    <strong data-i18n="reminder-ricevimento-lbl">Ricevimento</strong>
                     <a href="https://maps.app.goo.gl/gyQPPhtSWLvdgnvj6" target="_blank" rel="noopener">Sala San Tommaso Ricevimenti</a>
                 </div>
             </div>
         </div>
-        <span class="couple-sign">Nicola &amp; Anastasia</span>
-        <a href="index.html" class="back-link">&#8592; Torna alla Home</a>
+        <span class="couple-sign" data-i18n="couple-sign">Nicola &amp; Anastasia</span>
+        <a href="index.html" class="back-link" data-i18n="grazie-back">← Torna alla Home</a>
     </div>
     <script>
         const colors = [['#f9c6d0','#e8869a'],['#fde2c8','#f5b98e'],['#e8f5d4','#b5d67a'],['#fce4ec','#f48fb1']];
@@ -83,5 +83,6 @@
             pc.appendChild(p);
         }
     </script>
+    <script src="translations.js"></script>
 </body>
 </html>
